@@ -21,7 +21,7 @@ async def store_farerule(farerule: FareRule):
             else:
                 raise HTTPException(status_code=500, detail="Fare rule already exists in cache")
         else:
-            cache_collection.insert_one({'hash':farerule.hash,'response':farerule.response})
+            cache_collection.insert_one({'hash':farerule.hash,'response':farerule.response,"rule":farerule.rule})
             if not redis_client.exists(farerule.hash):
                 redis_client.set(farerule.hash, farerule.response)
                 return {"message": "Fare rule stored successfully", "hash": farerule.hash}

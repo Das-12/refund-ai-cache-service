@@ -1,4 +1,5 @@
 
+from typing import Optional
 from pydantic import BaseModel
 
 # Define the Pydantic models
@@ -6,3 +7,4 @@ from pydantic import BaseModel
 class FareRule(BaseModel):
     hash: str
     response: str
+    rule:Optional[str] = ""
