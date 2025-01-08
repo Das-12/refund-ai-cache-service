@@ -3,8 +3,13 @@ from .config import settings
 import redis
 
 # MONGO_DETAILS = "mongodb+srv://muhammedarshadm:QgZEv11DThwYkC1y@cluster0.mfwgw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  # Replace with your MongoDB URI
-MONGO_DETAILS = f"mongodb://{settings.MONGO_USERNAME}:{settings.MONGO_PASSWORD}@{settings.MONGO_HOST}:{settings.MONGO_PORT}/admin?authSource={settings.MONGO_AUTH_SOURCE}"
-
+# MONGO_DETAILS = f"mongodb://{settings.MONGO_USERNAME}:{settings.MONGO_PASSWORD}@{settings.MONGO_HOST}:{settings.MONGO_PORT}/admin?authSource={settings.MONGO_AUTH_SOURCE}"
+MONGO_DETAILS = f"mongodb://{settings.MONGO_HOST}:{settings.MONGO_PORT}/"
+if settings.MONGO_USERNAME and settings.MONGO_PASSWORD:
+    MONGO_DETAILS = (
+        f"mongodb://{settings.MONGO_USERNAME}:{settings.MONGO_PASSWORD}@"
+        f"{settings.MONGO_HOST}:{settings.MONGO_PORT}/admin?authSource={settings.MONGO_AUTH_SOURCE}"
+    )
 
 redis_client = redis.Redis(host='my-redis', port=6379, db=0)
 mongo_client = AsyncIOMotorClient(MONGO_DETAILS)
