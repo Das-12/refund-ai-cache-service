@@ -1,5 +1,5 @@
 from app.models import FareRule
-from .database import cache_collection,redis_client
+from .database import cache_collection, redis_client
 
 
 async def get_from_redis(key):
@@ -40,8 +40,6 @@ async def store_to_mongo(farerule:FareRule):
     mongo_data = await get_from_mongo(farerule.hash)
     if not mongo_data:
         cache_collection.insert_one({'hash':farerule.hash,'response':farerule.response,"rule":farerule.rule})
-    
-
 
 async def store_cache(farerule:FareRule):
     await store_to_redis(farerule)
