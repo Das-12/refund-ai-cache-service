@@ -1,6 +1,7 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from .config import settings
-import redis
+# import redis
+import redis.asyncio as redis
 
 # MONGO_DETAILS = "mongodb+srv://muhammedarshadm:QgZEv11DThwYkC1y@cluster0.mfwgw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  # Replace with your MongoDB URI
 # MONGO_DETAILS = f"mongodb://{settings.MONGO_USERNAME}:{settings.MONGO_PASSWORD}@{settings.MONGO_HOST}:{settings.MONGO_PORT}/admin?authSource={settings.MONGO_AUTH_SOURCE}"
