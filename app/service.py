@@ -1,7 +1,6 @@
 from app.models import FareRule
 from .database import cache_collection, redis_client
 
-
 async def get_from_redis(key):
     value = await redis_client.get(key)
     if value:
@@ -14,7 +13,6 @@ async def get_from_mongo(key):
     if document:
         return document['response']
     return None
-
 
 async def get_cache(key):
     # 1. Check Redis
@@ -30,7 +28,6 @@ async def get_cache(key):
     # 3. If neither Redis nor MongoDB has the data, return False
     print(f"No data found for key: {key}")
     return False
-
 
 async def store_to_redis(farerule:FareRule):
     redis_client.set(farerule.hash, farerule.response)
