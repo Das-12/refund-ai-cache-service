@@ -4,13 +4,13 @@ metadata:
   name: cache-service-env
   namespace: refundai
 data:  
-  REDIS_HOST: str = "104.248.150.195"
-  REDIS_PORT:int = 6379
-  REDIS_PASSWORD: str = "KldkhhmS392"
-  REDIS_DB:int = 0
+  REDIS_HOST: redis-master.redis.svc.cluster.local"
+  REDIS_PORT: "6379"
+  REDIS_PASSWORD: "RedisPassword123!"
+  REDIS_DB:int: "0"
 
-  MONGO_USERNAME:str = 'admin'
-  MONGO_PASSWORD:str = 'KldkhhmS%23392'
-  MONGO_HOST:str = '143.198.201.33'
-  MONGO_PORT:int = 27017
-  MONGO_AUTH_SOURCE:str = 'admin'
+  MONGO_USERNAME: "admin"
+  MONGO_PASSWORD: "MongoPassword123!"
+  MONGO_HOST: "mongodb.mongodb.svc.cluster.local"
+  MONGO_PORT: "27017"
+  MONGO_AUTH_SOURCE: "refund_cache"
