@@ -3,11 +3,11 @@ kind: ConfigMap
 metadata:
   name: cache-service-env
   namespace: refundai
-data:  
-  REDIS_HOST: redis-master.redis.svc.cluster.local"
+data:
+  REDIS_HOST: "redis-master.redis.svc.cluster.local"
   REDIS_PORT: "6379"
   REDIS_PASSWORD: "RedisPassword123!"
-  REDIS_DB:int: "0"
+  REDIS_DB: "0"
 
   MONGO_USERNAME: "admin"
   MONGO_PASSWORD: "MongoPassword123!"
