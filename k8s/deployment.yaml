@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment  
+metadata:
+  name: cache-service
+  namespace: refundai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cache-service
+  template:
+    metadata:
+      labels:
+        app: cache-service
+    spec:
+      containers:
+        - name: cache-service
+          image: ghcr.io/arshadm25/cache-service:v1
+          ports:
+            - containerPort: 8000
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: cache-service-env
+      imagePullSecrets:
+        - name: ghcr-secret  
